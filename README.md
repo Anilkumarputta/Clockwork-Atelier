@@ -1,8 +1,12 @@
 # ⚙️ Clockwork Atelier - Portfolio Website
 
+![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-orange?style=for-the-badge&logo=github)](https://anilkumarputta.github.io/Clockwork-Atelier/)
+
 > *"From any corner of the world, a good idea finds its way to the workshop."*
 
 Hey there! Welcome to my portfolio repository. This is where I showcase my work in mechanical design, restoration, and sculptural builds - all with that steampunk aesthetic I absolutely love.
+
+## 📸 Screenshots
 <img width="1863" height="935" alt="Screenshot 2026-02-07 140739" src="https://github.com/user-attachments/assets/bc65590c-1403-46a4-a19e-43365b7afab1" />
 <img width="1856" height="921" alt="Screenshot 2026-02-07 140810" src="https://github.com/user-attachments/assets/523a666f-16bd-4d3e-a86b-0da4edb38db6" />
 <img width="1861" height="924" alt="Screenshot 2026-02-07 140843" src="https://github.com/user-attachments/assets/24532438-e831-49d9-8d85-490354e6ffb0" />
