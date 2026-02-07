@@ -1,6 +1,6 @@
 # ⚙️ Clockwork Atelier - Portfolio Website
 
-![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-orange?style=for-the-badge&logo=github)](https://anilkumarputta.github.io/Clockwork-Atelier/)
+Live Demo: https://anilkumarputta.github.io/Clockwork-Atelier/
 
 > *"From any corner of the world, a good idea finds its way to the workshop."*
 
