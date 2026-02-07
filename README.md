@@ -1,5 +1,9 @@
 # ⚙️ Clockwork Atelier - Portfolio Website
 
+<p align="center">
+   <img src="logo.svg" alt="Clockwork Atelier logo" width="120" height="120" />
+</p>
+
 Live Demo: https://anilkumarputta.github.io/Clockwork-Atelier/
 
 > *"From any corner of the world, a good idea finds its way to the workshop."*
@@ -21,11 +25,14 @@ The design itself is inspired by the industrial revolution era - lots of brass t
 
 ## ✨ Features
 
-- **Smooth Animations**: Everything glides into view as you scroll - because even websites should have that mechanical precision
-- **Interactive Portfolio**: Filter projects by category (Gears, Restoration, Sculpture) to find exactly what you're looking for
-- **Responsive Design**: Looks great whether you're viewing on a massive workshop monitor or your phone
-- **Contact Form**: Powered by EmailJS - reach out for collaborations, commissions, or just to chat about clockwork
-- **Dark Theme**: Easy on the eyes, with that warm steampunk color palette
+- **Featured Project Card**: A hero spotlight with a short story and call-to-action
+- **Interactive Portfolio**: Filter projects by category (Gears, Restoration, Sculpture) and open images in a lightbox
+- **Tools & Materials Strip**: Quick scan of brass, steel, engraving, and restoration capabilities
+- **Preloaded Hero & Top Projects**: Faster initial visual impact
+- **Smooth Animations**: Scroll-based reveals powered by Intersection Observer
+- **Responsive Design**: Looks great across desktop, tablet, and mobile
+- **Contact Form**: Powered by EmailJS for collaboration and commission requests
+- **Dark Theme**: Brass-toned palette tuned for the steampunk aesthetic
 
 ## 🛠️ Built With
 
