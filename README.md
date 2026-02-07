@@ -4,8 +4,8 @@
 
 Hey there! Welcome to my portfolio repository. This is where I showcase my work in mechanical design, restoration, and sculptural builds - all with that steampunk aesthetic I absolutely love.
 <img width="1863" height="935" alt="Screenshot 2026-02-07 140739" src="https://github.com/user-attachments/assets/bc65590c-1403-46a4-a19e-43365b7afab1" />
+<img width="1872" height="930" alt="Screenshot 2026-02-07 140908" src="https://github.com/user-attachments/assets/17b56d35-7e54-4ddf-84db-327345b508a4" />
 
-![Hero Section](image1)
 
 ## 🎨 What's This All About?
 
