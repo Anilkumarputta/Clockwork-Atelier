@@ -8,7 +8,11 @@
     <link href="styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- Print-friendly stylesheet is included in styles.css -->
-    <link rel="icon" href="./logo.png" type="image/png">
+    <link rel="preload" as="image" href="images/mainimg.png">
+    <link rel="preload" as="image" href="images/img1.png">
+    <link rel="preload" as="image" href="images/img2.png">
+    <link rel="preload" as="image" href="images/img3.png">
+    <link rel="icon" href="./logo.svg" type="image/svg+xml">
 
     
 </head>
@@ -22,7 +26,10 @@
     </div>
 
     <header class="sticky-header">
-        <div class="logo" aria-label="Site logo">Clockwork Atelier</div>
+        <a class="logo" href="#home" aria-label="Clockwork Atelier home">
+            <img src="logo.svg" alt="Clockwork Atelier logo" width="36" height="36">
+            <span class="logo-text">Clockwork Atelier</span>
+        </a>
         <nav class="main-nav" aria-label="Primary">
             <a class="nav-link" href="#home">Home</a>
             <a class="nav-link" href="#projects">Projects</a>
@@ -40,7 +47,28 @@
         <p class="hero-tagline">Craft meets clockwork.</p>
         <a class="hero-cta" href="#projects">View Projects</a>
         <img src="images/mainimg.png" alt="Steampunk cityscape" style="border-radius: 1rem;">
+        <div class="featured-card" aria-label="Featured project">
+            <div class="featured-label">Featured Project</div>
+            <h2 class="featured-title">Aether Gear Assembly</h2>
+            <p class="featured-story">A hand-finished brass mechanism built around a 12:10 clock face, layered with tensioned rings and engraved teeth for a balanced kinetic rhythm.</p>
+            <div class="featured-meta">2026 · Brass, steel, hand engraving</div>
+            <a class="featured-cta" href="#contact">Start a commission</a>
+        </div>
         <!-- CTA button removed as requested -->
+    </section>
+
+    <section class="tools-strip animate-on-scroll" aria-label="Tools and materials">
+        <div class="tools-inner">
+            <h2>Tools &amp; Materials</h2>
+            <p>From raw brass to restored mechanisms, each build is tuned for precision and character.</p>
+            <div class="tools-list">
+                <span class="tool-chip">Brass</span>
+                <span class="tool-chip">Steel</span>
+                <span class="tool-chip">Engraving</span>
+                <span class="tool-chip">Restoration</span>
+                <span class="tool-chip">Leatherwork</span>
+            </div>
+        </div>
     </section>
 
     <!-- Project Milestones section removed as requested -->
@@ -197,6 +225,10 @@
                 <div class="footer-socials">
                     <a href="https://github.com/Anilkumarputta" class="social-button" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     <a href="http://linkedin.com/in/anil-putta" class="social-button" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="footer-badge" aria-label="Clockwork Atelier badge">
+                    <img src="logo.svg" alt="Clockwork Atelier logo" width="28" height="28">
+                    <span>Clockwork Atelier</span>
                 </div>
             </div>
         </footer>
