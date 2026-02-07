@@ -42,6 +42,12 @@ a {
     text-decoration: none;
 }
 
+.projects-block,
+#about,
+#contact {
+    scroll-margin-top: 90px;
+}
+
 /* Header */
 .sticky-header {
     position: sticky;
@@ -322,6 +328,7 @@ a {
     height: 220px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    background-color: #1b110b;
     border-radius: 16px;
     margin: 0 auto 12px;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
@@ -719,6 +726,7 @@ footer > div,
     display: flex;
     align-items: center;
     gap: 12px;
+    padding-right: 64px;
 }
 
 .social-button {
