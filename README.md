@@ -1,9 +1,4 @@
-# <img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/756f5568-1c58-4d83-b12f-9babfb2651a0" />
- Clockwork Atelier - Portfolio Website
-
-<p align="center">
-   <img src="logo.svg" alt="Clockwork Atelier logo" width="120" height="120" />
-</p>
+# <img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/756f5568-1c58-4d83-b12f-9babfb2651a0" /> Clockwork Atelier - Portfolio Website
 
 Live Demo: https://anilkumarputta.github.io/Clockwork-Atelier/
 
