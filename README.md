@@ -33,14 +33,12 @@ The design itself is inspired by the industrial revolution era - lots of brass t
 ## 📂 Project Structure
 
 ```
-portfolio/
+Clockwork-Atelier/
 ├── index.html              # Main HTML file
-├── css/
-│   └── styles.css         # All the styling magic
-├── js/
-│   ├── animations.js      # Scroll animations and interactions
-│   └── email.js          # Contact form handling
-└── images/               # Project screenshots and assets
+├── styles.css              # All the styling magic
+├── animations.js           # Scroll animations and interactions
+├── email.js                # Contact form handling
+└── images/                 # Project screenshots and assets
 ```
 
 ![Projects Gallery](image3)
@@ -51,12 +49,12 @@ Want to run this locally? It's super easy:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Anilkumarputta/portfolio.git
+   git clone https://github.com/Anilkumarputta/Clockwork-Atelier.git
    ```
 
 2. **Navigate to the project folder**
    ```bash
-   cd portfolio
+   cd Clockwork-Atelier
    ```
 
 3. **Open in your browser**
@@ -76,7 +74,7 @@ If you want to use the contact form, you'll need to set up EmailJS:
 1. Create a free account at [EmailJS](https://www.emailjs.com/)
 2. Set up an email service
 3. Create an email template
-4. Update the credentials in `js/email.js`:
+4. Update the credentials in `email.js`:
    ```javascript
    emailjs.init("YOUR_USER_ID");
    // and update service and template IDs
@@ -118,10 +116,10 @@ Want to make it your own? Here's where to look:
 ## 📝 To-Do List
 
 - [ ] Add a blog section for project write-ups
-- [ ] Implement a lightbox for project images
+- [x] Implement a lightbox for project images
 - [ ] Add more project categories
 - [ ] Create a timeline of work history
-- [ ] Add testimonials section
+- [ ] Add dark/light theme toggle
 
 ## 🤝 Contributing
 
@@ -135,8 +133,9 @@ This project is open source and available under the [MIT License](LICENSE).
 
 I'm always open to collaborations, commissions, and portfolio reviews. Whether you're looking to build something unique or just want to chat about mechanical art, don't hesitate to reach out!
 
-- **Website**: [Your deployed site URL]
+- **Website**: [https://anilkumarputta.github.io/Clockwork-Atelier/](https://anilkumarputta.github.io/Clockwork-Atelier/)
 - **GitHub**: [@Anilkumarputta](https://github.com/Anilkumarputta)
+- **LinkedIn**: [Anil Putta](http://linkedin.com/in/anil-putta)
 - **Email**: Through the contact form on the site
 
 ---
