@@ -226,6 +226,7 @@ a {
     box-shadow: 0 28px 48px rgba(0, 0, 0, 0.6);
 }
 
+/* Featured hero card styling (story + CTA) */
 .featured-card {
     margin: 26px auto 0;
     max-width: 680px;
@@ -321,6 +322,7 @@ a {
     margin-bottom: 20px;
 }
 
+/* Tools/materials chip strip under the hero section */
 .tools-strip {
     max-width: 1150px;
     margin: 0 auto 28px;

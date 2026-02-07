@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (navSections.length) {
         let navTicking = false;
+        // Keep scroll work lightweight using rAF
         const updateActiveNav = () => {
             const scrollPos = window.scrollY || window.pageYOffset;
             const offset = 80;
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '0px 0px -50px 0px'
     };
 
+    // Reveal sections once as they enter the viewport
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -69,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (backToTopBtn) {
         let backToTopTicking = false;
+        // Toggle button visibility without heavy scroll work
         window.addEventListener('scroll', function() {
             if (backToTopTicking) return;
             backToTopTicking = true;
@@ -133,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     lightboxDownload.setAttribute('download', fileName);
                 }
 
+                // Open the lightbox and lock background scroll
                 lightbox.classList.add('show');
                 lightbox.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden'; // Prevent background scroll
@@ -158,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         function closeLightbox() {
+            // Reset lightbox content for a clean next open
             lightbox.classList.remove('show');
             lightbox.setAttribute('aria-hidden', 'true');
             if (lightboxImage) lightboxImage.src = '';

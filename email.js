@@ -54,9 +54,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
+        // Silent spam trap
         if (honeypot && honeypot.value.trim() !== '') {
             return;
         }
+        // Simple human check before sending
         if (humanCheck && !humanCheck.checked) {
             showErrorMessage('Please confirm you are not a bot.');
             return;
@@ -64,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const lastSubmitRaw = localStorage.getItem(lastSubmitKey);
         const lastSubmit = lastSubmitRaw ? Number(lastSubmitRaw) : 0;
         const now = Date.now();
+        // Rate limit to prevent repeated submissions
         if (lastSubmit && now - lastSubmit < rateLimitMs) {
             const waitSeconds = Math.ceil((rateLimitMs - (now - lastSubmit)) / 1000);
             showErrorMessage(`Please wait ${waitSeconds}s before sending again.`);
@@ -73,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
         }
+        // Send the form via EmailJS
         emailjs.sendForm('service_ilga7yp', 'template_dy0u7yh', form, '_dkHQucs13j32kCb7')
             .then(function () {
                 localStorage.setItem(lastSubmitKey, String(Date.now()));
