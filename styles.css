@@ -171,6 +171,12 @@ label[for],
 
 /* Hero */
 .hero {
+    --hero-tilt-x: 0deg;
+    --hero-tilt-y: 0deg;
+    --hero-depth-x: 0px;
+    --hero-depth-y: 0px;
+    --hero-glow-x: 68%;
+    --hero-glow-y: 28%;
     width: 100%;
     max-width: none;
     margin: 0 0 24px;
@@ -184,7 +190,10 @@ label[for],
     display: flex;
     align-items: center;
     justify-content: center;
+    perspective: 1400px;
+    transform-style: preserve-3d;
     animation: heroFadeIn 1s ease-out;
+    transition: box-shadow 0.35s ease;
 }
 
 .tools-inner,
@@ -197,7 +206,9 @@ label[for],
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(95deg, rgba(10, 6, 4, 0.8) 0%, rgba(25, 15, 9, 0.68) 35%, rgba(18, 11, 7, 0.3) 68%, rgba(10, 6, 4, 0.6) 100%);
+    background:
+        radial-gradient(circle at var(--hero-glow-x) var(--hero-glow-y), rgba(243, 195, 106, 0.32), rgba(243, 195, 106, 0) 40%),
+        linear-gradient(95deg, rgba(10, 6, 4, 0.8) 0%, rgba(25, 15, 9, 0.68) 35%, rgba(18, 11, 7, 0.3) 68%, rgba(10, 6, 4, 0.6) 100%);
     pointer-events: none;
     z-index: 1;
 }
@@ -211,12 +222,19 @@ label[for],
     background: radial-gradient(circle, rgba(201, 166, 70, 0.28), rgba(201, 166, 70, 0));
     pointer-events: none;
     z-index: 1;
+    transform: translate3d(calc(var(--hero-depth-x) * -0.7), calc(var(--hero-depth-y) * -0.7), 0);
+    transition: transform 0.4s ease;
+    will-change: transform;
 }
 
 .hero-showcase {
     position: absolute;
     inset: 0;
     z-index: 0;
+    transform-style: preserve-3d;
+    transform: translate3d(calc(var(--hero-depth-x) * -0.45), calc(var(--hero-depth-y) * -0.45), -40px) rotateX(var(--hero-tilt-x)) rotateY(var(--hero-tilt-y));
+    transition: transform 0.35s ease;
+    will-change: transform;
 }
 
 .hero-showcase picture {
@@ -230,8 +248,9 @@ label[for],
     object-fit: cover;
     object-position: center;
     filter: brightness(0.78) saturate(0.92) contrast(1.05);
-    transform: scale(1.03);
+    transform: scale(1.05);
     transition: transform 0.8s ease, filter 0.8s ease;
+    will-change: transform;
 }
 
 .hero:hover .hero-image {
@@ -249,6 +268,14 @@ label[for],
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transform-style: preserve-3d;
+    transform: translate3d(var(--hero-depth-x), var(--hero-depth-y), 70px);
+    transition: transform 0.35s ease;
+    will-change: transform;
+}
+
+.hero-copy > * {
+    transform-style: preserve-3d;
 }
 
 .hero-kicker {
@@ -263,6 +290,7 @@ label[for],
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 700;
+    transform: translateZ(90px);
 }
 
 .hero h1 {
@@ -271,6 +299,7 @@ label[for],
     color: #f3c36a;
     text-shadow: 0 6px 24px rgba(0, 0, 0, 0.68);
     margin-bottom: 14px;
+    transform: translateZ(120px);
 }
 
 .hero-subtitle {
@@ -279,6 +308,7 @@ label[for],
     margin: 0 0 16px;
     max-width: 56ch;
     line-height: 1.6;
+    transform: translateZ(95px);
 }
 
 .hero-tagline {
@@ -287,6 +317,7 @@ label[for],
     margin: 0 0 22px;
     letter-spacing: 0.9px;
     text-transform: uppercase;
+    transform: translateZ(90px);
 }
 
 .hero-actions {
@@ -294,6 +325,11 @@ label[for],
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
+    transform: translateZ(110px);
+}
+
+.hero.is-3d-active {
+    box-shadow: 0 28px 56px rgba(0, 0, 0, 0.58);
 }
 
 .hero-cta {
@@ -1136,6 +1172,15 @@ button,
         opacity: 1 !important;
         transform: none !important;
     }
+    .hero,
+    .hero-copy,
+    .hero-showcase,
+    .hero-image {
+        transform: none !important;
+    }
+    .hero::after {
+        transform: none !important;
+    }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1198,6 +1243,12 @@ button,
     .tooltip[data-tooltip]:hover::after,
     .tooltip[data-tooltip]:hover::before {
         content: none;
+    }
+
+    .hero-copy,
+    .hero-showcase,
+    .hero::after {
+        transform: none;
     }
 }
 

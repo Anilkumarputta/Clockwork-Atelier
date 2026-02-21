@@ -278,6 +278,67 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ========================================
-    // 8. END
+    // 8. HERO 3D PARALLAX (DESKTOP POINTERS)
+    // ========================================
+    const hero = document.querySelector('.hero');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    if (hero && !prefersReducedMotion && supportsFinePointer) {
+        let rafPending = false;
+        let normalizedX = 0;
+        let normalizedY = 0;
+
+        const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+        const updateHeroDepth = () => {
+            const maxTiltDeg = 7.5;
+            const maxDepthPx = 18;
+            const tiltX = (-normalizedY * maxTiltDeg).toFixed(2);
+            const tiltY = (normalizedX * maxTiltDeg).toFixed(2);
+            const depthX = (normalizedX * maxDepthPx).toFixed(2);
+            const depthY = (normalizedY * maxDepthPx).toFixed(2);
+            const glowX = (50 + normalizedX * 18).toFixed(2);
+            const glowY = (35 + normalizedY * 14).toFixed(2);
+
+            hero.style.setProperty('--hero-tilt-x', `${tiltX}deg`);
+            hero.style.setProperty('--hero-tilt-y', `${tiltY}deg`);
+            hero.style.setProperty('--hero-depth-x', `${depthX}px`);
+            hero.style.setProperty('--hero-depth-y', `${depthY}px`);
+            hero.style.setProperty('--hero-glow-x', `${glowX}%`);
+            hero.style.setProperty('--hero-glow-y', `${glowY}%`);
+
+            rafPending = false;
+        };
+
+        const queueDepthUpdate = () => {
+            if (rafPending) return;
+            rafPending = true;
+            window.requestAnimationFrame(updateHeroDepth);
+        };
+
+        hero.addEventListener('mouseenter', () => {
+            hero.classList.add('is-3d-active');
+        });
+
+        hero.addEventListener('mousemove', (event) => {
+            const rect = hero.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+            const y = ((event.clientY - rect.top) / rect.height) * 2 - 1;
+            normalizedX = clamp(x, -1, 1);
+            normalizedY = clamp(y, -1, 1);
+            queueDepthUpdate();
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            normalizedX = 0;
+            normalizedY = 0;
+            hero.classList.remove('is-3d-active');
+            queueDepthUpdate();
+        });
+    }
+
+    // ========================================
+    // 9. END
     // ========================================
 });
