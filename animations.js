@@ -46,10 +46,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // 1. INTERSECTION OBSERVER FOR SCROLL ANIMATIONS
     // ========================================
     const animateElements = document.querySelectorAll('.animate-on-scroll');
+    const revealAllAnimatedSections = () => {
+        animateElements.forEach((el) => {
+            if (!el.classList.contains('in-view')) {
+                el.classList.add('in-view');
+            }
+        });
+    };
 
     if (!('IntersectionObserver' in window)) {
         // Fallback for older browsers/webviews: reveal content immediately.
-        animateElements.forEach((el) => el.classList.add('in-view'));
+        revealAllAnimatedSections();
     } else {
         const observerOptions = {
             threshold: 0.15,
@@ -67,6 +74,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, observerOptions);
 
         animateElements.forEach((el) => observer.observe(el));
+
+        // Failsafe for edge-case mobile browsers where observer callbacks may not fire.
+        window.addEventListener('load', function() {
+            setTimeout(revealAllAnimatedSections, 1600);
+        }, { once: true });
     }
 
     // ========================================
