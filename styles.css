@@ -46,6 +46,25 @@ a {
     text-decoration: none;
 }
 
+a,
+button,
+label[for],
+.project img {
+    touch-action: manipulation;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .projects-block,
 #about,
 #contact {
@@ -706,6 +725,13 @@ a {
     overflow: hidden;
 }
 
+.contact-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+}
+
 .contact-media {
     display: flex;
     gap: 16px;
@@ -918,12 +944,17 @@ button,
 
 /* Animate on scroll */
 .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+}
+
+.js .animate-on-scroll {
     opacity: 0;
     transform: translateY(40px) scale(0.98);
     transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.animate-on-scroll.in-view {
+.js .animate-on-scroll.in-view {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
@@ -957,6 +988,99 @@ button,
 #backToTopBtn:hover {
     background: #a0581b;
     transform: translateY(-6px) scale(1.12) rotate(-6deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .js .animate-on-scroll,
+    .js .animate-on-scroll.in-view {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+@media (hover: none) {
+    .logo:hover,
+    .main-nav .nav-link:hover,
+    .hero-cta:hover,
+    .hero img:hover,
+    .featured-cta:hover,
+    .projects:hover,
+    .project:hover,
+    .project:hover img,
+    .lightbox-download:hover,
+    .lightbox-close:hover,
+    .contact-form button:hover,
+    .social-button:hover,
+    #backToTopBtn:hover {
+        transform: none;
+    }
+
+    .main-nav .nav-link:hover {
+        color: #f0d9a4;
+        background: transparent;
+    }
+
+    .main-nav .nav-link:hover::after {
+        opacity: 0;
+        transform: scaleX(0.4);
+    }
+
+    .project:hover .project-meta {
+        opacity: 1;
+    }
+
+    .project::after {
+        display: none;
+    }
+
+    .tooltip[data-tooltip]:hover::after,
+    .tooltip[data-tooltip]:hover::before {
+        content: none;
+    }
+}
+
+@media (pointer: coarse) {
+    .main-nav .nav-link,
+    .hero-cta,
+    .featured-cta,
+    .project-filters label,
+    .contact-form button,
+    .social-button,
+    #backToTopBtn,
+    .lightbox-close,
+    .lightbox-download {
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-nav .nav-link {
+        padding: 10px 14px;
+    }
+
+    .project img {
+        cursor: pointer;
+    }
+
+    .hero-cta:active,
+    .featured-cta:active,
+    .contact-form button:active,
+    .social-button:active,
+    #backToTopBtn:active {
+        transform: scale(0.98);
+    }
 }
 
 .tooltip {

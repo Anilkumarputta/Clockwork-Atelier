@@ -76,6 +76,14 @@ document.addEventListener('DOMContentLoaded', function () {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
         }
+        if (typeof emailjs === 'undefined' || typeof emailjs.sendForm !== 'function') {
+            showErrorMessage('Email service is unavailable right now. Please try again later.');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = submitBtnText;
+            }
+            return;
+        }
         // Send the form via EmailJS
         emailjs.sendForm('service_ilga7yp', 'template_dy0u7yh', form, '_dkHQucs13j32kCb7')
             .then(function () {
