@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========================================
     // 3. LIGHTBOX FOR PROJECT IMAGES
     // ========================================
-    const projectImages = document.querySelectorAll('.project img');
+    const projectsGrid = document.querySelector('.projects');
     const lightbox = document.querySelector('.lightbox');
     const lightboxImage = document.querySelector('.lightbox-image');
     const lightboxCaption = document.querySelector('.lightbox-caption');
@@ -121,43 +121,45 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightboxClose = document.querySelector('.lightbox-close');
     const lightboxDownload = document.querySelector('.lightbox-download');
 
-    if (projectImages.length && lightbox) {
-        projectImages.forEach((img) => {
-            img.addEventListener('click', function() {
-                const project = this.closest('.project');
-                const title = project ? project.querySelector('p') : null;
-                const meta = project ? project.querySelector('.project-meta') : null;
-                const description = project ? project.getAttribute('data-desc') || '' : '';
-                const captionParts = [];
+    if (projectsGrid && lightbox) {
+        // Delegate image clicks so pagination/dynamic cards are supported.
+        projectsGrid.addEventListener('click', function (event) {
+            const img = event.target.closest('.project img');
+            if (!img || !projectsGrid.contains(img)) return;
 
-                if (title) {
-                    captionParts.push(title.textContent.replace(/\s+/g, ' ').trim());
-                }
-                if (meta) {
-                    captionParts.push(meta.textContent.trim());
-                }
+            const project = img.closest('.project');
+            const title = project ? project.querySelector('p') : null;
+            const meta = project ? project.querySelector('.project-meta') : null;
+            const description = project ? project.getAttribute('data-desc') || '' : '';
+            const captionParts = [];
 
-                const caption = captionParts.length ? captionParts.join(' · ') : (this.alt || '');
+            if (title) {
+                captionParts.push(title.textContent.replace(/\s+/g, ' ').trim());
+            }
+            if (meta) {
+                captionParts.push(meta.textContent.trim());
+            }
 
-                if (lightboxImage) {
-                    lightboxImage.src = this.src;
-                    lightboxImage.alt = this.alt || 'Project image';
-                }
-                if (lightboxCaption) lightboxCaption.textContent = caption;
-                if (lightboxDescription) {
-                    lightboxDescription.textContent = description || 'Material study with brass, steel, and hand-finished surfaces.';
-                }
-                if (lightboxDownload) {
-                    lightboxDownload.href = this.src;
-                    const fileName = this.src.split('/').pop() || 'project-image';
-                    lightboxDownload.setAttribute('download', fileName);
-                }
+            const caption = captionParts.length ? captionParts.join(' - ') : (img.alt || '');
 
-                // Open the lightbox and lock background scroll
-                lightbox.classList.add('show');
-                lightbox.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden'; // Prevent background scroll
-            });
+            if (lightboxImage) {
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt || 'Project image';
+            }
+            if (lightboxCaption) lightboxCaption.textContent = caption;
+            if (lightboxDescription) {
+                lightboxDescription.textContent = description || 'Material study with brass, steel, and hand-finished surfaces.';
+            }
+            if (lightboxDownload) {
+                lightboxDownload.href = img.src;
+                const fileName = img.src.split('/').pop() || 'project-image';
+                lightboxDownload.setAttribute('download', fileName);
+            }
+
+            // Open the lightbox and lock background scroll
+            lightbox.classList.add('show');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
         });
 
         // Close lightbox
@@ -165,14 +167,14 @@ document.addEventListener('DOMContentLoaded', function() {
             lightboxClose.addEventListener('click', closeLightbox);
         }
 
-        lightbox.addEventListener('click', function(e) {
+        lightbox.addEventListener('click', function (e) {
             if (e.target === lightbox) {
                 closeLightbox();
             }
         });
 
         // Close on Escape key
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && lightbox.classList.contains('show')) {
                 closeLightbox();
             }
