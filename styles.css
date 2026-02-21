@@ -37,6 +37,10 @@ img {
     max-width: 100%;
 }
 
+picture {
+    display: block;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -60,6 +64,8 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px 16px;
     animation: headerFadeIn 0.7s ease-out;
 }
 
@@ -101,6 +107,7 @@ a {
     align-items: center;
     gap: 18px;
     font-weight: 600;
+    flex-wrap: wrap;
 }
 
 .main-nav .nav-link {
@@ -294,7 +301,7 @@ a {
     margin: 0 auto 36px;
     padding: 24px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 24px;
     border-radius: 24px;
     background: linear-gradient(135deg, rgba(40, 24, 14, 0.95) 0%, rgba(66, 39, 21, 0.9) 100%);
@@ -843,7 +850,7 @@ footer > div,
     display: flex;
     align-items: center;
     gap: 12px;
-    padding-right: 64px;
+    padding-right: 0;
 }
 
 .footer-badge {
@@ -857,7 +864,7 @@ footer > div,
     color: #f3c36a;
     font-weight: 600;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
-    margin-right: 56px;
+    margin-right: 0;
 }
 
 .footer-badge img {
@@ -1104,7 +1111,7 @@ textarea:focus,
     }
     .projects {
         padding: 16px;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
     .tools-strip {
         padding: 0 16px;
@@ -1176,5 +1183,32 @@ textarea:focus,
     }
     .footer-socials {
         padding-right: 0;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero {
+        padding: 32px 14px 26px;
+    }
+    .hero h1 {
+        font-size: 1.9rem;
+    }
+    .main-nav {
+        gap: 8px;
+    }
+    .project {
+        padding: 14px;
+    }
+    .project img {
+        height: 190px;
+    }
+    .contact-form {
+        padding: 18px;
+    }
+    #backToTopBtn {
+        right: 14px;
+        bottom: 18px;
+        width: 42px;
+        height: 42px;
     }
 }

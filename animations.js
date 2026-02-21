@@ -47,22 +47,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========================================
     const animateElements = document.querySelectorAll('.animate-on-scroll');
 
-    const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    };
+    if (!('IntersectionObserver' in window)) {
+        // Fallback for older browsers/webviews: reveal content immediately.
+        animateElements.forEach((el) => el.classList.add('in-view'));
+    } else {
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    // Reveal sections once as they enter the viewport
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                observer.unobserve(entry.target); // Stop observing once animated
-            }
-        });
-    }, observerOptions);
+        // Reveal sections once as they enter the viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
 
-    animateElements.forEach((el) => observer.observe(el));
+        animateElements.forEach((el) => observer.observe(el));
+    }
 
     // ========================================
     // 2. BACK TO TOP BUTTON
