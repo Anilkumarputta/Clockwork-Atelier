@@ -45,29 +45,20 @@
     
 
     <section class="hero animate-on-scroll" aria-labelledby="hero-title">
-        <div class="hero-grid">
-            <div class="hero-copy">
-                <span class="hero-kicker">Clockwork Atelier</span>
-                <h1 id="hero-title">Discover My Craft</h1>
-                <p class="hero-subtitle">Hand-built mechanical art, brass detailing, and immersive steampunk storytelling.</p>
-                <p class="hero-tagline">Craft meets clockwork.</p>
-                <div class="hero-actions">
-                    <a class="hero-cta" href="#projects">View Projects</a>
-                    <a class="hero-secondary-cta" href="#contact">Start a commission</a>
-                </div>
-            </div>
-            <div class="hero-showcase">
-                <picture>
-                    <source type="image/webp" srcset="images/mainimg-400.webp 400w, images/mainimg-800.webp 800w, images/mainimg-1200.webp 1200w, images/mainimg-full.webp 2000w" sizes="(max-width:600px) 100vw, 50vw">
-                    <img src="images/mainimg.png" alt="Steampunk cityscape" loading="lazy" decoding="async">
-                </picture>
-                <div class="featured-card" aria-label="Featured project">
-                    <div class="featured-label">Featured Project</div>
-                    <h2 class="featured-title">Aether Gear Assembly</h2>
-                    <p class="featured-story">A hand-finished brass mechanism built around a 12:10 clock face, layered with tensioned rings and engraved teeth for a balanced kinetic rhythm.</p>
-                    <div class="featured-meta">2026 - Brass, steel, hand engraving</div>
-                    <a class="featured-cta" href="#contact">Start a commission</a>
-                </div>
+        <div class="hero-showcase" aria-hidden="true">
+            <picture>
+                <source type="image/webp" srcset="images/mainimg-400.webp 400w, images/mainimg-800.webp 800w, images/mainimg-1200.webp 1200w, images/mainimg-full.webp 2000w" sizes="100vw">
+                <img class="hero-image" src="images/mainimg.png" alt="Steampunk cityscape" loading="eager" fetchpriority="high" decoding="async">
+            </picture>
+        </div>
+        <div class="hero-copy">
+            <span class="hero-kicker">Clockwork Atelier</span>
+            <h1 id="hero-title">Discover My Craft</h1>
+            <p class="hero-subtitle">Hand-built mechanical art, brass detailing, and immersive steampunk storytelling.</p>
+            <p class="hero-tagline">Craft meets clockwork.</p>
+            <div class="hero-actions">
+                <a class="hero-cta" href="#projects">View Projects</a>
+                <a class="hero-secondary-cta" href="#contact">Start a commission</a>
             </div>
         </div>
     </section>
